@@ -1,12 +1,43 @@
-# React + Vite
+<div align="center">
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+  <h2 align="center">FURIA - LANDING PAGE Responsiva</h2>
 
-Currently, two official plugins are available:
+  Essa é uma página onde não só dedido amor a FURIA através do visual, mas sim no códido, amo CS desde criança, e a FURIA transformou o cenário e mudoua visão de como é ser um time, demonstrei um pouco da minha capacidade utilizando Vite + React e CSS com o uso do Media Queries para responsividade e JavaScript, porém sempre estou pronto pra desafios maiores como implementar com algum framework ou biblioteca mais avançadas e mesclar com minhas habilidades de design UI/UX
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+  <a href="https://furiacs-landing-page.vercel.app/"><strong>➥ Live Demo</strong></a>
 
-## Expanding the ESLint configuration
+</div>
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+<br />
+
+### Pré-requisitos
+
+Antes de começar, certifique-se de atender aos seguintes requisitos:
+* [Git](https://git-scm.com/downloads "Baixar Git") deve estar instalado em seu sistema operacional.
+
+### Execute Localmente
+
+Para executar **FURIACS** localmente, execute este comando em seu git bash:
+
+```bash
+git clone https://github.com/BooneMalay19/Furia-Project.git
+```
+Entre no repositório do projeto
+```bash
+cd Furia-Project
+```
+Instale o pacote e rode o projeto
+```bash
+npm install
+depois:
+npm run dev
+```
+   E pronto o projeto está totalmente configurado para rodar localmente, também estou criando o figma do challenger 2 e a codebase que logo logo irei postar.
+   
+### Contact
+
+Se você quiser entrar em contato comigo, pode entrar em contato comigo pelo [Email](boonemalay1@gmail.com)
+
+### License
+
+Esse projeto contém imagens criadas e divulgadas pela própria Furia, esse projeto está totalmente ligado ao processo seletivo para o cargo de assistente.
