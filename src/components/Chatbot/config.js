@@ -148,7 +148,7 @@ export const getBotResponse = (message) => {
   }
 
   if (/próxim|proxim|evento|torneio|jogo/i.test(lowerMsg)) {
-    return `🎮 Próximo evento:\n` +
+    return `🎮 Próximos jogos:\n` +
       `• ${furiaStats.upComingEvent}\n\n` +
       `📅 Próximos jogos:\n` +
       `• Em breve mais informações!`;
