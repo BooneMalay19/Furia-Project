@@ -15,7 +15,7 @@ export default function Chatbot() {
       handleBotResponse(
         `🦁 Olá torcedor da FURIA!\n\n` +
         `Eu sou o FuriBot, seu assistente virtual. Posso te ajudar com:\n\n` +
-        `• Informações sobre o time de CS:GO\n` +
+        `• Informações sobre o time de CS2\n` +
         `• Estatísticas e resultados\n` +
         `• Próximos jogos e eventos\n` +
         `• Nosso aplicativo oficial\n` +
@@ -87,7 +87,7 @@ export default function Chatbot() {
           <div className="chatbot-header">
             <div className="chatbot-title">
               <img src="/assets/images/Logo.png" alt="FURIA Logo" className="chatbot-logo" />
-              <h3>FuriBot - CS:GO</h3>
+              <h3>FuriBot - CS2</h3>
             </div>
             <button onClick={() => setIsOpen(false)} className="chatbot-close">
               ×
