@@ -51,7 +51,7 @@ export default function Footer() {
       <div className="footer-bottom">
         <div className="container">
           <p className="copyright">
-            Copyright &copy; 2024 <a href="https://www.linkedin.com/in/boonemalay/">Pedro Brito (Boone)</a>. todos os direitos reservados
+            Copyright &copy; 2025 <a href="https://www.linkedin.com/in/boonemalay/">Pedro Brito (Boone)</a>. todos os direitos reservados
           </p>
         </div>
       </div>
