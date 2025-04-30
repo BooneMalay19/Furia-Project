@@ -166,7 +166,7 @@ export const getBotResponse = (message) => {
     "• O time atual\n" +
     "• Últimas partidas\n" +
     "• Estatísticas\n" +
-    "• Próximo jogo\n" +
+    "• Próximos jogos\n" +
     "• Desempenho por mapas\n" +
     "• Nosso aplicativo\n" +
     "• Redes sociais";
