@@ -146,7 +146,7 @@ export const getBotResponse = (message) => {
 
   // Resposta sobre o time atual
   if (/time|elenco|jogador|roster|equipe/i.test(lowerMsg)) {
-    return `🦁 Time Principal de CS:GO:\n\n` +
+    return `🦁 Time Principal de CS2:\n\n` +
       `• ${furiaStats.players.Rifler} (Rifler Principal)\n` +
       `• ${furiaStats.players.IGL} (IGL - Líder do time)\n` +
       `• ${furiaStats.players.EntryFragger} (Entry Fragger)\n` +
