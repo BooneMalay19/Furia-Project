@@ -38,6 +38,29 @@ export const furiaStats = {
     "Inferno": 28.6
   },
   upComingEvent: "BLAST.tv Austin Major 2025 Stage 2",
+  upcomingMatches: [
+    { 
+      date: "15/05/2024", 
+      opponent: "Team Liquid", 
+      event: "ESL Pro League",
+      time: "19:00",
+      format: "MD3 (Melhor de 3)"
+    },
+    { 
+      date: "22/05/2024", 
+      opponent: "Natus Vincere", 
+      event: "BLAST Premier",
+      time: "20:30",
+      format: "MD3"
+    },
+    { 
+      date: "30/05/2024", 
+      opponent: "Fnatic", 
+      event: "IEM Dallas",
+      time: "18:00",
+      format: "MD3"
+    }
+  ],
   last6months: {
     tournements: 12,
     matches: 38,
@@ -46,7 +69,6 @@ export const furiaStats = {
     roundsPlayed: 1782,
     roundsWinRate: 52
   },
-  // Novos dados adicionados
   app: {
     name: "FURIA Nation",
     description: "O aplicativo oficial com notícias, estatísticas e conteúdo exclusivo",
@@ -58,7 +80,8 @@ export const furiaStats = {
       "Notificações de jogos ao vivo",
       "Estatísticas em tempo real",
       "Conteúdo exclusivo para membros",
-      "Loja integrada"
+      "Loja integrada",
+      "Calendário de jogos"
     ]
   },
   socialMedia: {
@@ -77,6 +100,10 @@ export const furiaStats = {
     tiktok: {
       handle: "@furiagg",
       url: "https://tiktok.com/@furiagg"
+    },
+    discord: {
+      handle: "FURIA Esports",
+      url: "https://discord.gg/furia"
     }
   }
 };
@@ -84,90 +111,112 @@ export const furiaStats = {
 export const getBotResponse = (message) => {
   const lowerMsg = message.toLowerCase();
   
-  // Resposta padrão para perguntas não relacionadas
-  if (!/furia|cs|time|jogador|partida|mapa|estat|coach|liga|torneio|evento|resultado|app|aplicativo|rede|social/i.test(lowerMsg)) {
+  // Verificação de termos permitidos (incluindo "próximos jogos" e variações)
+  if (!/furia|cs|time|jogador|partida|mapa|estat|coach|liga|torneio|evento|resultado|app|aplicativo|rede|social|próxim|proxim|jogo|calendário|calendario/i.test(lowerMsg)) {
     return "Só respondo perguntas sobre o time da FURIA 😎";
+  }
+
+  // Resposta sobre próximos jogos (melhorada)
+  if (/próximos jogos|proximos jogos|próximo jogo|proximo jogo|próximas partidas|proximas partidas|calendário|calendario|quando joga|quando é o próximo/i.test(lowerMsg)) {
+    return `🎮 Agenda Competitiva da FURIA:\n\n` +
+      `📅 Próximos jogos confirmados:\n` +
+      furiaStats.upcomingMatches.map(match => 
+        `• ${match.date} às ${match.time} - ${match.event}\n` +
+        `   vs ${match.opponent} (${match.format})`
+      ).join('\n\n') +
+      `\n\n🔔 Próximo grande evento: ${furiaStats.upComingEvent}\n` +
+      `📱 Acompanhe pelo app FURIA Nation para atualizações!`;
   }
 
   // Resposta sobre o aplicativo
   if (/app|aplicativo|download|instalar/i.test(lowerMsg)) {
     return `📱 ${furiaStats.app.name} - App Oficial:\n` +
       `${furiaStats.app.description}\n\n` +
-      `🔹 Principais recursos:\n` +
+      `⭐ Principais recursos:\n` +
       furiaStats.app.features.map(f => `• ${f}`).join('\n') +
-      `\n\n⬇️ Download:\n` +
+      `\n\n⬇️ Baixe agora:\n` +
       `• Android: ${furiaStats.app.download.android}\n` +
-      `• iOS: ${furiaStats.app.download.ios}`;
+      `• iOS: ${furiaStats.app.download.ios}\n\n` +
+      `Não perca nenhum detalhe do time FURIA!`;
   }
 
-  // Resposta sobre redes sociais
-  if (/rede social|redes|social|twitter|insta|instagram|youtube|tiktok/i.test(lowerMsg)) {
-    return `📲 Redes Sociais da FURIA:\n` +
-      `• Twitter (${furiaStats.socialMedia.twitter.handle}): ${furiaStats.socialMedia.twitter.url}\n` +
-      `• Instagram (${furiaStats.socialMedia.instagram.handle}): ${furiaStats.socialMedia.instagram.url}\n` +
-      `• YouTube (${furiaStats.socialMedia.youtube.handle}): ${furiaStats.socialMedia.youtube.url}\n` +
-      `• TikTok (${furiaStats.socialMedia.tiktok.handle}): ${furiaStats.socialMedia.tiktok.url}\n\n` +
-      `Siga-nos para conteúdo exclusivo!`;
+  // Resposta sobre redes sociais (atualizada com Discord)
+  if (/rede social|redes|social|twitter|insta|instagram|youtube|tiktok|discord/i.test(lowerMsg)) {
+    return `🌐 Redes Sociais Oficiais:\n\n` +
+      `• Twitter ${furiaStats.socialMedia.twitter.handle}: ${furiaStats.socialMedia.twitter.url}\n` +
+      `• Instagram ${furiaStats.socialMedia.instagram.handle}: ${furiaStats.socialMedia.instagram.url}\n` +
+      `• YouTube ${furiaStats.socialMedia.youtube.handle}: ${furiaStats.socialMedia.youtube.url}\n` +
+      `• TikTok ${furiaStats.socialMedia.tiktok.handle}: ${furiaStats.socialMedia.tiktok.url}\n` +
+      `• Discord ${furiaStats.socialMedia.discord.handle}: ${furiaStats.socialMedia.discord.url}\n\n` +
+      `📲 Siga-nos para conteúdo exclusivo e interação com a comunidade!`;
   }
 
-  // Respostas existentes (time, estatísticas, etc.)
-  if (/time|elenco|jogador/i.test(lowerMsg)) {
-    return `🔫 Time atual da FURIA:\n` +
-      `• ${furiaStats.players.Rifler} (Rifler)\n` +
-      `• ${furiaStats.players.IGL} (IGL)\n` +
+  // Resposta sobre o time atual
+  if (/time|elenco|jogador|roster|equipe/i.test(lowerMsg)) {
+    return `🦁 Time Principal de CS:GO:\n\n` +
+      `• ${furiaStats.players.Rifler} (Rifler Principal)\n` +
+      `• ${furiaStats.players.IGL} (IGL - Líder do time)\n` +
       `• ${furiaStats.players.EntryFragger} (Entry Fragger)\n` +
-      `• ${furiaStats.players.Support} (Support)\n` +
-      `• ${furiaStats.players.AWPer} (AWPer)\n` +
-      `\nCoach: ${furiaStats.coach}`;
+      `• ${furiaStats.players.Support} (Suporte)\n` +
+      `• ${furiaStats.players.AWPer} (Awper)\n\n` +
+      `👨‍🏫 Coach: ${furiaStats.coach}\n` +
+      `💼 Staff: Analista Tático, Psicólogo e Preparador Físico`;
   }
 
-  if (/últim|recente|ultim|partida/i.test(lowerMsg)) {
+  // Resposta sobre última partida
+  if (/últim|recente|ultim|partida|resultado recente/i.test(lowerMsg)) {
     const lastMatch = furiaStats.lastMatch;
-    return `📅 Última partida (${lastMatch.date}):\n` +
-      `• ${lastMatch.league}\n` +
-      `• vs ${lastMatch.opponent}\n` +
-      `• Resultado: ${lastMatch.result} (${lastMatch.score})`;
+    return `📌 Último Jogo - ${lastMatch.date}:\n\n` +
+      `🏆 Torneio: ${lastMatch.league}\n` +
+      `🆚 Adversário: ${lastMatch.opponent}\n` +
+      `📊 Resultado: ${lastMatch.result} (${lastMatch.score})\n\n` +
+      `🔍 Detalhes: Partida ${lastMatch.score} no formato MD2`;
   }
 
-  if (/histórico|resultado|desempenho|performance/i.test(lowerMsg)) {
-    return `📊 Últimos 5 jogos:\n` +
+  // Resposta sobre histórico
+  if (/histórico|resultado|desempenho|performance|últimos jogos|ultimos jogos/i.test(lowerMsg)) {
+    return `📈 Desempenho Recente:\n\n` +
+      `📅 Últimos 5 jogos:\n` +
       furiaStats.lastfiveMatches.map(m => 
         `• ${m.opponent}: ${m.result} (${m.score})`
       ).join('\n') + 
-      `\n\n📈 Últimos 6 meses:\n` +
-      `• ${furiaStats.last6months.matches} partidas\n` +
+      `\n\n📊 Últimos 6 meses:\n` +
+      `• ${furiaStats.last6months.matches} partidas disputadas\n` +
       `• ${furiaStats.last6months.winrate}% de vitórias\n` +
-      `• ${furiaStats.last6months.roundsWinRate}% de rounds ganhos`;
+      `• ${furiaStats.last6months.roundsWinRate}% de rounds ganhos\n` +
+      `• ${furiaStats.last6months.tournements} torneios participados`;
   }
 
-  if (/mapa|winrate|porcentagem/i.test(lowerMsg)) {
-    return `🗺️ Winrate por mapa:\n` +
-      Object.entries(furiaStats.mapsWinRate).map(
-        ([map, rate]) => `• ${map}: ${rate}%`
-      ).join('\n');
+  // Resposta sobre mapas
+  if (/mapa|winrate|porcentagem|melhor mapa|pior mapa/i.test(lowerMsg)) {
+    return `🗺️ Performance por Mapas:\n\n` +
+      `📌 Winrate nos últimos 3 meses:\n` +
+      Object.entries(furiaStats.mapsWinRate)
+        .sort((a, b) => b[1] - a[1])
+        .map(([map, rate]) => `• ${map}: ${rate}% de vitórias`)
+        .join('\n') +
+      `\n\n🔎 Time mais confortável em Dust2 (${furiaStats.mapsWinRate["Dust2"]}%)`;
   }
 
-  if (/próxim|proxim|evento|torneio|jogos/i.test(lowerMsg)) {
-    return `🎮 Próximos jogos:\n` +
-      `• ${furiaStats.upComingEvent}\n\n` +
-      `📅 Próximos jogos:\n` +
-      `• Em breve mais informações!`;
-  }
-
-  if (/estat|número|dado|vitóri|derrot/i.test(lowerMsg)) {
-    return `📊 Estatísticas gerais:\n` +
+  // Resposta sobre estatísticas gerais
+  if (/estat|número|dado|vitóri|derrot|performance geral/i.test(lowerMsg)) {
+    return `📊 Estatísticas do Time:\n\n` +
       `• Vitórias: ${furiaStats.victories}\n` +
       `• Derrotas: ${furiaStats.defeats}\n` +
-      `• Total de rounds: ${furiaStats.totalRounds}\n` +
-      `• Winrate últimos 6 meses: ${furiaStats.last6months.winrate}%`;
+      `• Total de rounds jogados: ${furiaStats.totalRounds}\n` +
+      `• Winrate últimos 6 meses: ${furiaStats.last6months.winrate}%\n` +
+      `• Média de rounds por mapa: ${Math.round(furiaStats.last6months.roundsPlayed/furiaStats.last6months.mapsPlayed)}\n\n` +
+      `📈 Time em ascensão no cenário internacional!`;
   }
 
-  return "🤔 Não entendi completamente. Você pode perguntar sobre:\n" +
-    "• O time atual\n" +
-    "• Últimas partidas\n" +
-    "• Estatísticas\n" +
-    "• Próximos jogos\n" +
-    "• Desempenho por mapas\n" +
-    "• Nosso aplicativo\n" +
-    "• Redes sociais";
+  // Resposta padrão para outras perguntas
+  return `🤔 Não entendi completamente. Você pode perguntar sobre:\n\n` +
+    `• "Próximos jogos" - Calendário de partidas\n` +
+    `• "Time atual" - Elenco principal\n` +
+    `• "Últimos resultados" - Desempenho recente\n` +
+    `• "Estatísticas" - Números do time\n` +
+    `• "Mapas" - Performance por cenário\n` +
+    `• "App FURIA" - Aplicativo oficial\n` +
+    `• "Redes sociais" - Onde nos seguir\n\n` +
+    `🦁 #VEMPRAFURIA`;
 };
