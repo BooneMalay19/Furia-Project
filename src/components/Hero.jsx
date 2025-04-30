@@ -7,7 +7,7 @@ export default function Hero() {
       </video>
       <div className="overlay"></div>
       <div className="container">
-        <p className="hero-subtitle">CS Team SOMOS</p>
+        <p className="hero-subtitle">CS2 Team SOMOS</p>
         <h1 className="h1 hero-title">FURIA</h1>
         <div className="btn-group">
           <a href="https://www.furia.gg" className="btn btn-primary">
