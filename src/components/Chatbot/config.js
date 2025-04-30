@@ -116,16 +116,9 @@ export const getBotResponse = (message) => {
     return "Só respondo perguntas sobre o time da FURIA 😎";
   }
 
-  // Resposta sobre próximos jogos (melhorada)
+  // Resposta sobre próximos jogos (CORREÇÃO APLICADA AQUI)
   if (/próximos jogos|proximos jogos|próximo jogo|proximo jogo|próximas partidas|proximas partidas|calendário|calendario|quando joga|quando é o próximo/i.test(lowerMsg)) {
-    return `🎮 Agenda Competitiva da FURIA:\n\n` +
-      `📅 Próximos jogos confirmados:\n` +
-      furiaStats.upcomingMatches.map(match => 
-        `• ${match.date} às ${match.time} - ${match.event}\n` +
-        `   vs ${match.opponent} (${match.format})`
-      ).join('\n\n') +
-      `\n\n🔔 Próximo grande evento: ${furiaStats.upComingEvent}\n` +
-      `📱 Acompanhe pelo app FURIA Nation para atualizações!`;
+    return "Em breve mais informações";
   }
 
   // Resposta sobre o aplicativo
