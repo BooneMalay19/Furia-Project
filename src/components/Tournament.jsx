@@ -1,6 +1,6 @@
 export default function Tournament() {
   const players = [
-    { name: "FalleN", img: "https://img-cdn.hltv.org/playerbodyshot/EQuPdPSxo2xmXDwwoVRx4j.png" },
+    { name: "FalleN", img: "https://img-cdn.hltv.org/playerbodyshot/Wf26SO_o8nvnsLh0AqZXc5.png?ixlib=java-2.1.0&w=400&s=36b7189a4ae7b020d0acb087fd44777a" },
     { name: "MOLODOY", img: "https://img-cdn.hltv.org/playerbodyshot/rz-VvCo_RiA_HoLGsDNd6v.png" },
     { name: "Yuurih", img: "https://img-cdn.hltv.org/playerbodyshot/FxsN1PVin9cB-2FPzklmaQ.png" },
     { name: "KSCERATO", img: "https://img-cdn.hltv.org/playerbodyshot/fqwcgzlPrkI1C5lFXiJhrj.png" },
