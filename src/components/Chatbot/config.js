@@ -38,29 +38,6 @@ export const furiaStats = {
     "Inferno": 28.6
   },
   upComingEvent: "BLAST.tv Austin Major 2025 Stage 2",
-  upcomingMatches: [
-    { 
-      date: "15/05/2024", 
-      opponent: "Team Liquid", 
-      event: "ESL Pro League",
-      time: "19:00",
-      format: "MD3 (Melhor de 3)"
-    },
-    { 
-      date: "22/05/2024", 
-      opponent: "Natus Vincere", 
-      event: "BLAST Premier",
-      time: "20:30",
-      format: "MD3"
-    },
-    { 
-      date: "30/05/2024", 
-      opponent: "Fnatic", 
-      event: "IEM Dallas",
-      time: "18:00",
-      format: "MD3"
-    }
-  ],
   last6months: {
     tournements: 12,
     matches: 38,
@@ -69,19 +46,15 @@ export const furiaStats = {
     roundsPlayed: 1782,
     roundsWinRate: 52
   },
-  app: {
-    name: "FURIA Nation",
-    description: "O aplicativo oficial com notícias, estatísticas e conteúdo exclusivo",
-    download: {
-      android: "https://play.google.com/store/apps/details?id=com.furia.nation",
-      ios: "https://apps.apple.com/br/app/furia-nation/id123456789"
-    },
+  whatsapp: {
+    number: "+5511999999999", // Substitua pelo número oficial da FURIA
+    url: "https://wa.me/5511999999999", // Link direto para WhatsApp
+    description: "Canal oficial de comunicação da FURIA Esports",
     features: [
-      "Notificações de jogos ao vivo",
-      "Estatísticas em tempo real",
-      "Conteúdo exclusivo para membros",
-      "Loja integrada",
-      "Calendário de jogos"
+      "Suporte direto com a organização",
+      "Alertas de jogos ao vivo",
+      "Conteúdos exclusivos",
+      "Promoções especiais"
     ]
   },
   socialMedia: {
@@ -111,29 +84,26 @@ export const furiaStats = {
 export const getBotResponse = (message) => {
   const lowerMsg = message.toLowerCase();
   
-  // Verificação de termos permitidos (incluindo "próximos jogos" e variações)
-  if (!/furia|cs|time|jogador|partida|mapa|estat|coach|liga|torneio|evento|resultado|app|aplicativo|rede|social|próxim|proxim|jogo|calendário|calendario/i.test(lowerMsg)) {
+  // Verificação de termos permitidos (atualizado com "whatsapp")
+  if (!/furia|cs|time|jogador|partida|mapa|estat|coach|liga|torneio|evento|resultado|whatsapp|zap|rede|social|próxim|proxim|jogo|calendário|calendario/i.test(lowerMsg)) {
     return "Só respondo perguntas sobre o time da FURIA 😎";
   }
 
-  // Resposta sobre próximos jogos (CORREÇÃO APLICADA AQUI)
+  // Resposta sobre próximos jogos
   if (/próximos jogos|proximos jogos|próximo jogo|proximo jogo|próximas partidas|proximas partidas|calendário|calendario|quando joga|quando é o próximo/i.test(lowerMsg)) {
     return "Em breve mais informações";
   }
 
-  // Resposta sobre o aplicativo
-  if (/app|aplicativo|download|instalar/i.test(lowerMsg)) {
-    return `📱 ${furiaStats.app.name} - App Oficial:\n` +
-      `${furiaStats.app.description}\n\n` +
-      `⭐ Principais recursos:\n` +
-      furiaStats.app.features.map(f => `• ${f}`).join('\n') +
-      `\n\n⬇️ Baixe agora:\n` +
-      `• Android: ${furiaStats.app.download.android}\n` +
-      `• iOS: ${furiaStats.app.download.ios}\n\n` +
-      `Não perca nenhum detalhe do time FURIA!`;
+  // Resposta sobre WhatsApp (substitui o aplicativo)
+  if (/whatsapp|zap|contato|suporte|comunicação/i.test(lowerMsg)) {
+    return `📱 *WhatsApp Oficial da FURIA*\n\n` +
+      `${furiaStats.whatsapp.description}\n\n` +
+      `🔹 Principais recursos:\n` +
+      furiaStats.whatsapp.features.map(f => `• ${f}`).join('\n') +
+      `\n\n💬 Converse conosco: ${furiaStats.whatsapp.url}`;
   }
 
-  // Resposta sobre redes sociais (atualizada com Discord)
+  // Resposta sobre redes sociais (atualizada)
   if (/rede social|redes|social|twitter|insta|instagram|youtube|tiktok|discord/i.test(lowerMsg)) {
     return `🌐 Redes Sociais Oficiais:\n\n` +
       `• Twitter ${furiaStats.socialMedia.twitter.handle}: ${furiaStats.socialMedia.twitter.url}\n` +
@@ -141,7 +111,7 @@ export const getBotResponse = (message) => {
       `• YouTube ${furiaStats.socialMedia.youtube.handle}: ${furiaStats.socialMedia.youtube.url}\n` +
       `• TikTok ${furiaStats.socialMedia.tiktok.handle}: ${furiaStats.socialMedia.tiktok.url}\n` +
       `• Discord ${furiaStats.socialMedia.discord.handle}: ${furiaStats.socialMedia.discord.url}\n\n` +
-      `📲 Siga-nos para conteúdo exclusivo e interação com a comunidade!`;
+      `📲 Siga-nos para conteúdo exclusivo!`;
   }
 
   // Resposta sobre o time atual
@@ -202,14 +172,13 @@ export const getBotResponse = (message) => {
       `📈 Time em ascensão no cenário internacional!`;
   }
 
-  // Resposta padrão para outras perguntas
+  // Resposta padrão (atualizada com WhatsApp)
   return `🤔 Não entendi completamente. Você pode perguntar sobre:\n\n` +
     `• "Próximos jogos" - Calendário de partidas\n` +
     `• "Time atual" - Elenco principal\n` +
     `• "Últimos resultados" - Desempenho recente\n` +
     `• "Estatísticas" - Números do time\n` +
-    `• "Mapas" - Performance por cenário\n` +
-    `• "App FURIA" - Aplicativo oficial\n` +
+    `• "WhatsApp" - Contato oficial\n` +
     `• "Redes sociais" - Onde nos seguir\n\n` +
     `🦁 #VEMPRAFURIA`;
 };
