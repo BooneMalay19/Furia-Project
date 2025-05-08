@@ -39,8 +39,8 @@ export const furiaStats = {
   },
   upComingEvent: "BLAST.tv Austin Major 2025 Stage 2",
   whatsapp: {
-    number: "+5511999999999", // Número oficial da FURIA
-    url: "https://wa.me/5511999999999?text=Olá%20FURIA%20Esports!", // Link com mensagem pré-pronta
+    number: "+5511945128297", // Número oficial da FURIA
+    url: "https://wa.me/5511945128297", // Link com mensagem pré-pronta
     description: "Fale diretamente com a FURIA pelo WhatsApp!",
     features: [
       "Respostas rápidas da equipe",
@@ -87,7 +87,6 @@ export const getBotResponse = (message) => {
     return "Em breve mais informações";
   }
 
-  // Resposta sobre WhatsApp (substitui o aplicativo)
   if (/whatsapp|zap|contato|suporte|comunicação|falar|conversar/i.test(lowerMsg)) {
     return `📱 *WhatsApp Oficial da FURIA*\n\n` +
       `${furiaStats.whatsapp.description}\n\n` +
