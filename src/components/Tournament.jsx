@@ -1,10 +1,10 @@
 export default function Tournament() {
   const players = [
     { name: "FalleN", img: "https://img-cdn.hltv.org/playerbodyshot/Wf26SO_o8nvnsLh0AqZXc5.png?ixlib=java-2.1.0&w=400&s=36b7189a4ae7b020d0acb087fd44777a" },
-    { name: "MOLODOY", img: "https://img-cdn.hltv.org/playerbodyshot/rz-VvCo_RiA_HoLGsDNd6v.png" },
-    { name: "Yuurih", img: "https://img-cdn.hltv.org/playerbodyshot/FxsN1PVin9cB-2FPzklmaQ.png" },
-    { name: "KSCERATO", img: "https://img-cdn.hltv.org/playerbodyshot/fqwcgzlPrkI1C5lFXiJhrj.png" },
-    { name: "YEKINDAR", img: "https://img-cdn.hltv.org/playerbodyshot/-JQfNT1ijoDX06XY6vO4PF.png" }
+    { name: "MOLODOY", img: "https://img-cdn.hltv.org/playerbodyshot/qNyAd_xVHTTmbCAKPx-jPk.png?ixlib=java-2.1.0&w=400&s=b128ede878e462107c70590202b14139" },
+    { name: "Yuurih", img: "https://img-cdn.hltv.org/playerbodyshot/i6UGhkYxrhutAOmWZT0-8O.png?ixlib=java-2.1.0&w=400&s=2cd696f6ff4baf5680a43d537214b6eb" },
+    { name: "KSCERATO", img: "https://img-cdn.hltv.org/playerbodyshot/U6t0j2bJDKUR3mTI8rIqv7.png?ixlib=java-2.1.0&w=400&s=b5257c378b8122f415f21985855e95ca" },
+    { name: "YEKINDAR", img: "https://img-cdn.hltv.org/playerbodyshot/rRclDPBXIMxFv2fv0dV0J0.png?ixlib=java-2.1.0&w=400&s=2b0f6209ca40efa081852b9d1d8e01c1" }
   ]
 
   return (
