@@ -47,8 +47,8 @@ export const furiaStats = {
     roundsWinRate: 52
   },
   whatsapp: {
-    number: "+5511999999999", // Substitua pelo número oficial da FURIA
-    url: "https://wa.me/5511999999999", // Link direto para WhatsApp
+    number: "+5511945128297",
+    url: "https://wa.me/5511945128297",
     description: "Canal oficial de comunicação da FURIA Esports",
     features: [
       "Suporte direto com a organização",
