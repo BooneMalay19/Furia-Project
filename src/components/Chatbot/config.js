@@ -38,24 +38,17 @@ export const furiaStats = {
     "Inferno": 28.6
   },
   upComingEvent: "BLAST.tv Austin Major 2025 Stage 2",
-  last6months: {
-    tournements: 12,
-    matches: 38,
-    winrate: 45,
-    mapsPlayed: 83,
-    roundsPlayed: 1782,
-    roundsWinRate: 52
-  },
   whatsapp: {
-    number: "+5511945128297",
-    url: "https://wa.me/5511945128297",
-    description: "Canal oficial de comunicação da FURIA Esports",
+    number: "+5511999999999", // Número oficial da FURIA
+    url: "https://wa.me/5511999999999?text=Olá%20FURIA%20Esports!", // Link com mensagem pré-pronta
+    description: "Fale diretamente com a FURIA pelo WhatsApp!",
     features: [
-      "Suporte direto com a organização",
-      "Alertas de jogos ao vivo",
-      "Conteúdos exclusivos",
-      "Promoções especiais"
-    ]
+      "Respostas rápidas da equipe",
+      "Suporte para fãs",
+      "Informações sobre eventos",
+      "Promoções exclusivas"
+    ],
+    buttonLabel: "💬 Chamar no WhatsApp" // Texto do botão
   },
   socialMedia: {
     twitter: {
@@ -84,7 +77,7 @@ export const furiaStats = {
 export const getBotResponse = (message) => {
   const lowerMsg = message.toLowerCase();
   
-  // Verificação de termos permitidos (atualizado com "whatsapp")
+  // Verificação de termos permitidos (incluindo WhatsApp)
   if (!/furia|cs|time|jogador|partida|mapa|estat|coach|liga|torneio|evento|resultado|whatsapp|zap|rede|social|próxim|proxim|jogo|calendário|calendario/i.test(lowerMsg)) {
     return "Só respondo perguntas sobre o time da FURIA 😎";
   }
@@ -95,90 +88,55 @@ export const getBotResponse = (message) => {
   }
 
   // Resposta sobre WhatsApp (substitui o aplicativo)
-  if (/whatsapp|zap|contato|suporte|comunicação/i.test(lowerMsg)) {
+  if (/whatsapp|zap|contato|suporte|comunicação|falar|conversar/i.test(lowerMsg)) {
     return `📱 *WhatsApp Oficial da FURIA*\n\n` +
       `${furiaStats.whatsapp.description}\n\n` +
-      `🔹 Principais recursos:\n` +
+      `🔹 O que você pode fazer:\n` +
       furiaStats.whatsapp.features.map(f => `• ${f}`).join('\n') +
-      `\n\n💬 Converse conosco: ${furiaStats.whatsapp.url}`;
+      `\n\n👉 Clique no botão abaixo para conversar:\n` +
+      `[${furiaStats.whatsapp.buttonLabel}](${furiaStats.whatsapp.url})`; // Botão clicável
   }
 
-  // Resposta sobre redes sociais (atualizada)
+  // Resposta sobre redes sociais
   if (/rede social|redes|social|twitter|insta|instagram|youtube|tiktok|discord/i.test(lowerMsg)) {
-    return `🌐 Redes Sociais Oficiais:\n\n` +
-      `• Twitter ${furiaStats.socialMedia.twitter.handle}: ${furiaStats.socialMedia.twitter.url}\n` +
-      `• Instagram ${furiaStats.socialMedia.instagram.handle}: ${furiaStats.socialMedia.instagram.url}\n` +
-      `• YouTube ${furiaStats.socialMedia.youtube.handle}: ${furiaStats.socialMedia.youtube.url}\n` +
-      `• TikTok ${furiaStats.socialMedia.tiktok.handle}: ${furiaStats.socialMedia.tiktok.url}\n` +
-      `• Discord ${furiaStats.socialMedia.discord.handle}: ${furiaStats.socialMedia.discord.url}\n\n` +
-      `📲 Siga-nos para conteúdo exclusivo!`;
+    return `🌐 *Redes Sociais da FURIA*\n\n` +
+      `• Twitter: [${furiaStats.socialMedia.twitter.handle}](${furiaStats.socialMedia.twitter.url})\n` +
+      `• Instagram: [${furiaStats.socialMedia.instagram.handle}](${furiaStats.socialMedia.instagram.url})\n` +
+      `• YouTube: [${furiaStats.socialMedia.youtube.handle}](${furiaStats.socialMedia.youtube.url})\n` +
+      `• TikTok: [${furiaStats.socialMedia.tiktok.handle}](${furiaStats.socialMedia.tiktok.url})\n` +
+      `• Discord: [${furiaStats.socialMedia.discord.handle}](${furiaStats.socialMedia.discord.url})\n\n` +
+      `📲 *Prefere WhatsApp?* Clique aqui: [💬 Chamar no WhatsApp](${furiaStats.whatsapp.url})`;
   }
 
   // Resposta sobre o time atual
   if (/time|elenco|jogador|roster|equipe/i.test(lowerMsg)) {
-    return `🦁 Time Principal de CS2:\n\n` +
+    return `🦁 *Time Principal de CS2*\n\n` +
       `• ${furiaStats.players.Rifler} (Rifler Principal)\n` +
       `• ${furiaStats.players.IGL} (IGL - Líder do time)\n` +
       `• ${furiaStats.players.EntryFragger} (Entry Fragger)\n` +
       `• ${furiaStats.players.Support} (Suporte)\n` +
       `• ${furiaStats.players.AWPer} (Awper)\n\n` +
-      `👨‍🏫 Coach: ${furiaStats.coach}\n` +
-      `💼 Staff: Analista Tático, Psicólogo e Preparador Físico`;
+      `👨‍🏫 *Coach*: ${furiaStats.coach}\n` +
+      `💼 *Staff*: Analista Tático, Psicólogo e Preparador Físico\n\n` +
+      `👉 *Dúvidas?* [Chamar no WhatsApp](${furiaStats.whatsapp.url})`;
   }
 
   // Resposta sobre última partida
   if (/últim|recente|ultim|partida|resultado recente/i.test(lowerMsg)) {
     const lastMatch = furiaStats.lastMatch;
-    return `📌 Último Jogo - ${lastMatch.date}:\n\n` +
+    return `📌 *Último Jogo - ${lastMatch.date}*\n\n` +
       `🏆 Torneio: ${lastMatch.league}\n` +
       `🆚 Adversário: ${lastMatch.opponent}\n` +
       `📊 Resultado: ${lastMatch.result} (${lastMatch.score})\n\n` +
-      `🔍 Detalhes: Partida ${lastMatch.score} no formato MD2`;
+      `🔍 *Detalhes*: Partida ${lastMatch.score} no formato MD2\n\n` +
+      `👉 *Quer detalhes?* [Chamar no WhatsApp](${furiaStats.whatsapp.url})`;
   }
 
-  // Resposta sobre histórico
-  if (/histórico|resultado|desempenho|performance|últimos jogos|ultimos jogos/i.test(lowerMsg)) {
-    return `📈 Desempenho Recente:\n\n` +
-      `📅 Últimos 5 jogos:\n` +
-      furiaStats.lastfiveMatches.map(m => 
-        `• ${m.opponent}: ${m.result} (${m.score})`
-      ).join('\n') + 
-      `\n\n📊 Últimos 6 meses:\n` +
-      `• ${furiaStats.last6months.matches} partidas disputadas\n` +
-      `• ${furiaStats.last6months.winrate}% de vitórias\n` +
-      `• ${furiaStats.last6months.roundsWinRate}% de rounds ganhos\n` +
-      `• ${furiaStats.last6months.tournements} torneios participados`;
-  }
-
-  // Resposta sobre mapas
-  if (/mapa|winrate|porcentagem|melhor mapa|pior mapa/i.test(lowerMsg)) {
-    return `🗺️ Performance por Mapas:\n\n` +
-      `📌 Winrate nos últimos 3 meses:\n` +
-      Object.entries(furiaStats.mapsWinRate)
-        .sort((a, b) => b[1] - a[1])
-        .map(([map, rate]) => `• ${map}: ${rate}% de vitórias`)
-        .join('\n') +
-      `\n\n🔎 Time mais confortável em Dust2 (${furiaStats.mapsWinRate["Dust2"]}%)`;
-  }
-
-  // Resposta sobre estatísticas gerais
-  if (/estat|número|dado|vitóri|derrot|performance geral/i.test(lowerMsg)) {
-    return `📊 Estatísticas do Time:\n\n` +
-      `• Vitórias: ${furiaStats.victories}\n` +
-      `• Derrotas: ${furiaStats.defeats}\n` +
-      `• Total de rounds jogados: ${furiaStats.totalRounds}\n` +
-      `• Winrate últimos 6 meses: ${furiaStats.last6months.winrate}%\n` +
-      `• Média de rounds por mapa: ${Math.round(furiaStats.last6months.roundsPlayed/furiaStats.last6months.mapsPlayed)}\n\n` +
-      `📈 Time em ascensão no cenário internacional!`;
-  }
-
-  // Resposta padrão (atualizada com WhatsApp)
-  return `🤔 Não entendi completamente. Você pode perguntar sobre:\n\n` +
+  // Resposta padrão (com botão para WhatsApp)
+  return `🤔 *Não entendi completamente.* Você pode perguntar sobre:\n\n` +
     `• "Próximos jogos" - Calendário de partidas\n` +
     `• "Time atual" - Elenco principal\n` +
-    `• "Últimos resultados" - Desempenho recente\n` +
-    `• "Estatísticas" - Números do time\n` +
     `• "WhatsApp" - Contato oficial\n` +
     `• "Redes sociais" - Onde nos seguir\n\n` +
-    `🦁 #VEMPRAFURIA`;
+    `[💬 Clique aqui para falar no WhatsApp](${furiaStats.whatsapp.url})`;
 };
