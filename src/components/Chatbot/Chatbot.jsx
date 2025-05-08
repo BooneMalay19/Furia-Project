@@ -18,7 +18,7 @@ export default function Chatbot() {
         `• Informações sobre o time de CS2\n` +
         `• Estatísticas e resultados\n` +
         `• Próximos jogos e eventos\n` +
-        `• Nosso aplicativo oficial\n` +
+        `• Nosso Whatsapp\n` +
         `• Links para nossas redes sociais\n\n` +
         `Pergunte o que quiser sobre a FURIA!`
       );
@@ -76,7 +76,7 @@ export default function Chatbot() {
     "Time atual",
     "Próximos jogos",
     "Últimos resultados",
-    "Nosso aplicativo",
+    "Whatsapp",
     "Redes sociais"
   ];
 
